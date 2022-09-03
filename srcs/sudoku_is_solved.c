@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku_solve.c                                     :+:      :+:    :+:   */
+/*   sudoku_is_solved.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:18:09 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/03 18:18:10 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/03 22:53:56 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 22:53:58 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sudoku.h"
 #include "sudoku_internal.h"
 
-t_bool	sudoku_solve(int *grid)
+t_bool	sudoku_is_solved(int *cells)
 {
-	int		*cells;
-	t_bool	res;
+	int	idx;
 
-	res = 0;
-	cells = sudoku_make(grid);
-	if (!cells)
-		return (0);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
-	sudoku_solve_simple(cells);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
-	if (sudoku_is_solved(cells))
-	{
-		sudoku_collapse(cells, grid);
-		res = 1;
-	}
-	sudoku_print_grid(grid);
-	free(cells);
-	return (res);
+	idx = -1;
+	while (++idx < SUDOKU_WIDTH * SUDOKU_HEIGHT)
+		if (cell_count(cells + (t_ptrdiff)idx * CELL_SIZE) != 1)
+			return (0);
+	return (1);
 }

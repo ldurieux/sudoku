@@ -24,6 +24,9 @@ void	sudoku_cleanup(int *cells);
 void	sudoku_solve_simple(int *cells);
 void	sudoku_collapse(int *cells, int *grid);
 
+t_bool	sudoku_is_solved(int *cells);
+t_bool	sudoku_is_impossible(int *cells);
+
 void	sudoku_print_cells(const int *cells);
 
 /* return the count of possibilities in a cell */

@@ -7,6 +7,8 @@ SRCS	= \
 			srcs/sudoku_cleanup.c \
 			srcs/sudoku_solve_simple.c \
 			srcs/sudoku_collapse.c \
+			srcs/sudoku_is_solved.c \
+			srcs/sudoku_is_impossible.c \
 			srcs/cell_count.c \
 			srcs/cell_remove.c \
 			srcs/cell_value.c \
