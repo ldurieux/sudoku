@@ -108,6 +108,9 @@ static inline t_bool	solve_cell(t_solve_data *data)
 	return (0);
 }
 
+/* try to solve every cell until no cell
+ * were solved in the loop
+*/
 void	sudoku_solve_simple(int *cells)
 {
 	t_solve_data	d;

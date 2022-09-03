@@ -77,6 +77,9 @@ static inline void	call_cleanup(t_bool *again, t_cleanup_data *data,
 		*again = f(data);
 }
 
+/* clean every cell until no cell
+ * were cleaned in the loop
+*/
 void	sudoku_cleanup(int *cells)
 {
 	t_bool			again;

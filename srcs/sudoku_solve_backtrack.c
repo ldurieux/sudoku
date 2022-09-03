@@ -44,10 +44,10 @@ t_bool	sudoku_solve_backtrack(int *cells, int cell_idx)
 		return (0);
 	if (sudoku_is_solved(cells))
 		return (1);
-	item_idx = -1;
 	cell = cells + (t_ptrdiff)cell_idx * CELL_SIZE;
 	if (cell_count(cell) == 1)
 		return (sudoku_solve_backtrack(cells, cell_idx + 1));
+	item_idx = -1;
 	while (++item_idx != CELL_SIZE)
 	{
 		if (!cell[item_idx])

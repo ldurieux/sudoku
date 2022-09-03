@@ -12,7 +12,7 @@
 
 #include "sudoku_internal.h"
 
-void	sudoku_collapse(int *cells, int *grid)
+void	sudoku_collapse(const int *cells, int *grid)
 {
 	int	x;
 	int	y;

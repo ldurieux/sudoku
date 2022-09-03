@@ -12,7 +12,7 @@
 
 #include "sudoku_internal.h"
 
-t_bool	sudoku_is_impossible(int *cells)
+t_bool	sudoku_is_impossible(const int *cells)
 {
 	int	idx;
 
