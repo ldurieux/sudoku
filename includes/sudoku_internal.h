@@ -19,16 +19,12 @@
 # define SUDOKU_HEIGHT	9
 # define CELL_SIZE		9
 
-typedef struct s_sudoku
-{
-	int	*cells;
-}	t_sudoku;
+int		*sudoku_make(const int *grid);
+void	sudoku_print_cells(const int *cells);
 
-t_sudoku	sudoku_make(int *grid);
-
+//NOLINTBEGIN(readability-magic-number)
 /* get index of value in a 1d array
  * from x and y pos */
-//NOLINTBEGIN(readability-magic-number)
 static inline int	grid_idx(int x, int y)
 {
 	return (y * SUDOKU_WIDTH + x);
@@ -37,6 +33,11 @@ static inline int	grid_idx(int x, int y)
 static inline int	cell_idx(int x, int y)
 {
 	return (y * (SUDOKU_WIDTH * CELL_SIZE) + x * CELL_SIZE);
+}
+
+static inline int	cell_item_idx(int x, int y, int item)
+{
+	return (y * (SUDOKU_WIDTH * CELL_SIZE) + x * CELL_SIZE + item);
 }
 //NOLINTEND
 
