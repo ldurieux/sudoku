@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sudoku_print_grid.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/03 17:31:30 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 17:31:31 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "sudoku.h"
 #include "sudoku_internal.h"
 
-# define LINE_SEP		"---#---#---\n"
-# define LINE_SEP_SIZE	12
+#define LINE_SEP		"---#---#---\n"
+#define LINE_SEP_SIZE	12
 
 static inline char	get_char(const int *grid, int x, int y)
 {
