@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku_solve.c                                     :+:      :+:    :+:   */
+/*   cell_contains.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:18:09 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/03 18:18:10 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/03 22:40:58 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 22:40:59 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sudoku.h"
 #include "sudoku_internal.h"
 
-t_bool	sudoku_solve(int *grid)
+t_bool	cell_contains(const int *cell, int val)
 {
-	int	*cells;
-
-	cells = sudoku_make(grid);
-	if (!cells)
-		return (0);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
-	sudoku_solve_simple(cells);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
-	sudoku_collapse(cells, grid);
-	sudoku_print_grid(grid);
-	free(cells);
-	return (0);
+	return (cell[val - 1] != 0);
 }

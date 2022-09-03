@@ -21,6 +21,7 @@
 
 int		*sudoku_make(const int *grid);
 void	sudoku_cleanup(int *cells);
+void	sudoku_solve_simple(int *cells);
 void	sudoku_collapse(int *cells, int *grid);
 
 void	sudoku_print_cells(const int *cells);
@@ -31,6 +32,8 @@ int		cell_count(const int *cell);
 /* return the value of cell only if cell is certain
  * otherwise returns 0 */
 int		cell_value(const int *cell);
+t_bool	cell_contains(const int *cell, int val);
+void	cell_set(int *cell, int val);
 
 /* remove the possibility val from cell
  * returns true if the cell has become

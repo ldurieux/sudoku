@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku_solve.c                                     :+:      :+:    :+:   */
+/*   cell_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:18:09 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/03 18:18:10 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/03 22:41:00 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 22:41:01 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sudoku.h"
 #include "sudoku_internal.h"
 
-t_bool	sudoku_solve(int *grid)
+void	cell_set(int *cell, int val)
 {
-	int	*cells;
-
-	cells = sudoku_make(grid);
-	if (!cells)
-		return (0);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
-	sudoku_solve_simple(cells);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
-	sudoku_collapse(cells, grid);
-	sudoku_print_grid(grid);
-	free(cells);
-	return (0);
+	ft_memset(cell, 0, sizeof(int) * CELL_SIZE);
+	cell[val - 1] = val;
 }
