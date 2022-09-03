@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku_solve.c                                     :+:      :+:    :+:   */
+/*   sudoku_collapse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:18:09 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/03 18:18:10 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/03 20:45:44 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 20:45:45 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sudoku.h"
 #include "sudoku_internal.h"
 
-t_bool	sudoku_solve(int *grid)
+void	sudoku_collapse(int *cells, int *grid)
 {
-	int	*cells;
+	int	x;
+	int	y;
 
-	cells = sudoku_make(grid);
-	if (!cells)
-		return (0);
-	sudoku_collapse(cells, grid);
-	free(cells);
-	return (0);
+	y = -1;
+	while (++y < SUDOKU_HEIGHT)
+	{
+		x = -1;
+		while (++x < SUDOKU_WIDTH)
+			grid[grid_idx(x, y)] = cell_value(cells + cell_idx(x, y));
+	}
 }

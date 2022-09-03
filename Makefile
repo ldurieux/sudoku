@@ -5,6 +5,7 @@ SRCS	= \
 			srcs/sudoku_make.c \
 			srcs/sudoku_solve.c \
 			srcs/sudoku_cleanup.c \
+			srcs/sudoku_collapse.c \
 			srcs/cell_count.c \
 			srcs/cell_remove.c \
 			srcs/cell_value.c \

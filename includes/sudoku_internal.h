@@ -21,6 +21,7 @@
 
 int		*sudoku_make(const int *grid);
 void	sudoku_cleanup(int *cells);
+void	sudoku_collapse(int *cells, int *grid);
 
 void	sudoku_print_cells(const int *cells);
 
