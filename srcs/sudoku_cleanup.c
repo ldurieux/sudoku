@@ -19,40 +19,25 @@ typedef struct s_cleanup_data
 	int	idx;
 }	t_cleanup_data;
 
-static t_bool	cells_cleanup_line(t_cleanup_data *data)
+static t_bool	cells_cleanup_axis(t_cleanup_data *data)
 {
 	t_bool	res;
-	int		x;
-	int		y;
+	int		start_x;
+	int		start_y;
+	int		i;
 
 	res = 0;
-	x = -1;
-	y = data->idx / SUDOKU_WIDTH;
-	while (++x < SUDOKU_WIDTH)
+	start_x = data->idx % SUDOKU_HEIGHT;
+	start_y = data->idx / SUDOKU_HEIGHT;
+	i = -1;
+	while (++i < SUDOKU_WIDTH)
 	{
-		if (x == data->idx % SUDOKU_WIDTH)
-			continue ;
-		if (cell_remove(data->cells + cell_idx(x, y), data->val))
-			res = 1;
-	}
-	return (res);
-}
-
-static t_bool	cells_cleanup_row(t_cleanup_data *data)
-{
-	t_bool	res;
-	int		x;
-	int		y;
-
-	res = 0;
-	x = data->idx % SUDOKU_HEIGHT;
-	y = -1;
-	while (++y < SUDOKU_HEIGHT)
-	{
-		if (y == data->idx / SUDOKU_WIDTH)
-			continue ;
-		if (cell_remove(data->cells + cell_idx(x, y), data->val))
-			res = 1;
+		if (i != start_y)
+			if (cell_remove(data->cells + cell_idx(start_x, i), data->val))
+				res = 1;
+		if (i != start_x)
+			if (cell_remove(data->cells + cell_idx(i, start_y), data->val))
+				res = 1;
 	}
 	return (res);
 }
@@ -108,8 +93,7 @@ void	sudoku_cleanup(int *cells)
 			d.val = cell_value(cells + (t_ptrdiff)d.idx * CELL_SIZE);
 			if (d.val)
 			{
-				call_cleanup(&again, &d, cells_cleanup_line);
-				call_cleanup(&again, &d, cells_cleanup_row);
+				call_cleanup(&again, &d, cells_cleanup_axis);
 				call_cleanup(&again, &d, cells_cleanup_group);
 			}
 		}

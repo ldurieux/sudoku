@@ -27,11 +27,9 @@ t_bool	sudoku_solve(int *grid)
 	sudoku_solve_simple(cells);
 	sudoku_print_cells(cells);
 	write(STDOUT, "\n\n\n", 3);
+	sudoku_collapse(cells, grid);
 	if (sudoku_is_solved(cells))
-	{
-		sudoku_collapse(cells, grid);
 		res = 1;
-	}
 	sudoku_print_grid(grid);
 	free(cells);
 	return (res);
