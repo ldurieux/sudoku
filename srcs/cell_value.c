@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku_solve.c                                     :+:      :+:    :+:   */
+/*   cell_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:18:09 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/03 18:18:10 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/03 20:25:31 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 20:25:32 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sudoku.h"
 #include "sudoku_internal.h"
 
-t_bool	sudoku_solve(int *grid)
+int	cell_value(const int *cell)
 {
-	int	*cells;
+	int	idx;
 
-	cells = sudoku_make(grid);
-	if (!cells)
+	if (cell_count(cell) != 1)
 		return (0);
-	free(cells);
+	idx = -1;
+	while (++idx < CELL_SIZE)
+		if (cell[idx])
+			return (idx + 1);
 	return (0);
 }

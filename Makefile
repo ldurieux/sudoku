@@ -1,9 +1,13 @@
 SRCS	= \
 			main.c \
 			srcs/sudoku_print_grid.c \
-			srcs/sudoku_make.c \
 			srcs/sudoku_print_cells.c \
+			srcs/sudoku_make.c \
 			srcs/sudoku_solve.c \
+			srcs/sudoku_cleanup.c \
+			srcs/cell_count.c \
+			srcs/cell_remove.c \
+			srcs/cell_value.c \
 
 LIBS	=	-lft \
 

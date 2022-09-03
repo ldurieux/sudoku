@@ -20,7 +20,21 @@
 # define CELL_SIZE		9
 
 int		*sudoku_make(const int *grid);
+void	sudoku_cleanup(int *cells);
+
 void	sudoku_print_cells(const int *cells);
+
+/* return the count of possibilities in a cell */
+int		cell_count(const int *cell);
+
+/* return the value of cell only if cell is certain
+ * otherwise returns 0 */
+int		cell_value(const int *cell);
+
+/* remove the possibility val from cell
+ * returns true if the cell has become
+ * certain */
+t_bool	cell_remove(int *cell, int val);
 
 //NOLINTBEGIN(readability-magic-number)
 /* get index of value in a 1d array

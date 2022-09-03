@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sudoku_solve.c                                     :+:      :+:    :+:   */
+/*   cell_count.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:18:09 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/03 18:18:10 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/03 20:25:26 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/03 20:25:27 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sudoku.h"
 #include "sudoku_internal.h"
 
-t_bool	sudoku_solve(int *grid)
+int	cell_count(const int	*cell)
 {
-	int	*cells;
+	int	idx;
+	int	count;
 
-	cells = sudoku_make(grid);
-	if (!cells)
-		return (0);
-	free(cells);
-	return (0);
+	count = 0;
+	idx = -1;
+	while (++idx < CELL_SIZE)
+		if (cell[idx])
+			count++;
+	return (count);
 }

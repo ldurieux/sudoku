@@ -34,12 +34,12 @@ void	cell_init(int *cell, int value)
 
 int	*sudoku_make(const int *grid)
 {
-	int	*sudoku;
+	int	*cells;
 	int	x;
 	int	y;
 
-	sudoku = malloc(sizeof(int) * SUDOKU_WIDTH * SUDOKU_HEIGHT * CELL_SIZE);
-	if (!sudoku)
+	cells = malloc(sizeof(int) * SUDOKU_WIDTH * SUDOKU_HEIGHT * CELL_SIZE);
+	if (!cells)
 		return (NULL);
 	y = 0;
 	while (y < SUDOKU_HEIGHT)
@@ -47,10 +47,11 @@ int	*sudoku_make(const int *grid)
 		x = 0;
 		while (x < SUDOKU_WIDTH)
 		{
-			cell_init(sudoku + cell_idx(x, y), grid[grid_idx(x, y)]);
+			cell_init(cells + cell_idx(x, y), grid[grid_idx(x, y)]);
 			x++;
 		}
 		y++;
 	}
-	return (sudoku);
+	sudoku_cleanup(cells);
+	return (cells);
 }
