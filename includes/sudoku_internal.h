@@ -18,10 +18,16 @@
 # define SUDOKU_WIDTH	9
 # define SUDOKU_HEIGHT	9
 # define CELL_SIZE		9
+/* the following line doesn't pass the norminette
+# define CELLS_LEN		SUDOKU_WIDTH * SUDOKU_HEIGHT * CELL_SIZE
+ * instead let's put a number without any meaning
+ * seems leggit */
+# define CELLS_LEN		729
 
 int		*sudoku_make(const int *grid);
 void	sudoku_cleanup(int *cells);
 void	sudoku_solve_simple(int *cells);
+t_bool	sudoku_solve_backtrack(int *cells, int cell_idx);
 void	sudoku_collapse(int *cells, int *grid);
 
 t_bool	sudoku_is_solved(int *cells);

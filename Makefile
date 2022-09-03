@@ -6,6 +6,7 @@ SRCS	= \
 			srcs/sudoku_solve.c \
 			srcs/sudoku_cleanup.c \
 			srcs/sudoku_solve_simple.c \
+			srcs/sudoku_solve_backtrack.c \
 			srcs/sudoku_collapse.c \
 			srcs/sudoku_is_solved.c \
 			srcs/sudoku_is_impossible.c \

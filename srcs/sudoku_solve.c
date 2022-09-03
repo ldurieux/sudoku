@@ -18,19 +18,13 @@ t_bool	sudoku_solve(int *grid)
 	int		*cells;
 	t_bool	res;
 
-	res = 0;
 	cells = sudoku_make(grid);
 	if (!cells)
 		return (0);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
 	sudoku_solve_simple(cells);
-	sudoku_print_cells(cells);
-	write(STDOUT, "\n\n\n", 3);
+	sudoku_solve_backtrack(cells, 0);
 	sudoku_collapse(cells, grid);
-	if (sudoku_is_solved(cells))
-		res = 1;
-	sudoku_print_grid(grid);
+	res = sudoku_is_solved(cells);
 	free(cells);
 	return (res);
 }
