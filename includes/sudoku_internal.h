@@ -62,8 +62,9 @@ t_bool	cell_contains(const int *cell, int val);
 void	cell_set(int *cell, int val);
 
 /* remove the possibility val from cell
- * returns true if the cell has become
- * certain */
+ * return false if val was not set
+ *           or if cell is now impossible
+ * otherwise return true */
 t_bool	cell_remove(int *cell, int val);
 
 /* get index of value in a 1d array
