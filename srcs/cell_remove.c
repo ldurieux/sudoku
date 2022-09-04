@@ -12,6 +12,9 @@
 
 #include "sudoku_internal.h"
 
+/* should return true if the cell has become certain
+ * instead return false if the cell is impossible, why ?
+ */
 t_bool	cell_remove(int *cell, int val)
 {
 	if (!cell[val - 1])

@@ -34,21 +34,19 @@ void	sudoku_print_grid(const int *grid)
 
 	if (!grid)
 		return ;
-	y = 0;
-	while (y < SUDOKU_HEIGHT)
+	y = -1;
+	while (++y < SUDOKU_HEIGHT)
 	{
 		if (!(y % 3) && y)
 			write(STDOUT, LINE_SEP, LINE_SEP_SIZE);
-		x = 0;
-		while (x < SUDOKU_WIDTH)
+		x = -1;
+		while (++x < SUDOKU_WIDTH)
 		{
 			if (!(x % 3) && x)
 				write(STDOUT, "|", 1);
 			chr = get_char(grid, x, y);
 			write(STDOUT, &chr, 1);
-			x++;
 		}
 		write(STDOUT, "\n", 1);
-		y++;
 	}
 }

@@ -23,12 +23,10 @@ static inline void	print_item(const int *cells, int item_idx, int x, int y)
 
 	res = (char)cells[cell_item_idx(x, y, item_idx)];
 	if (res == 0)
-		write(STDOUT, ".", 1);
+		res = '.';
 	else
-	{
 		res += '0';
-		write(STDOUT, &res, 1);
-	}
+	write(STDOUT, &res, 1);
 }
 
 void	sudoku_print_cells_line(const int *cells, int y)

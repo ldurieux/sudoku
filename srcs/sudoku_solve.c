@@ -18,6 +18,8 @@ t_bool	sudoku_solve(int *grid)
 	int		*cells;
 	t_bool	res;
 
+	if (!grid)
+		return (0);
 	cells = sudoku_make(grid);
 	if (!cells)
 		return (0);

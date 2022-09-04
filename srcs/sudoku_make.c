@@ -41,16 +41,12 @@ int	*sudoku_make(const int *grid)
 	cells = malloc(sizeof(int) * SUDOKU_WIDTH * SUDOKU_HEIGHT * CELL_SIZE);
 	if (!cells)
 		return (NULL);
-	y = 0;
-	while (y < SUDOKU_HEIGHT)
+	y = -1;
+	while (++y < SUDOKU_HEIGHT)
 	{
-		x = 0;
-		while (x < SUDOKU_WIDTH)
-		{
+		x = -1;
+		while (++x < SUDOKU_WIDTH)
 			cell_init(cells + cell_idx(x, y), grid[grid_idx(x, y)]);
-			x++;
-		}
-		y++;
 	}
 	sudoku_cleanup(cells);
 	return (cells);
